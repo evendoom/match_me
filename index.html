@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./assets/images/favicon.ico">
+
+    <!-- GoogleFonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- JQuery Modal Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_7o7V8WyF34BiuHYbrbxsP');
+        })();
+    </script>
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Match Me</title>
+</head>
+<body>
+    <div id="js-container" class="container">
+        <section class="intro-screen">
+            <header><h1>Match Me</h1></header>
+            <div class="buttons-container">
+                <button class="btn-start-game">Start Game</button>
+                <a class="btn-instructions" href="#instructions" rel="modal:open">Instructions</a>
+            </div>
+            <footer>
+                <p>&copy; Match Me 2021</p>
+                <div class="social-media-links">
+                    <a href="https://www.facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="https://play.google.com/store/" target="_blank"><ion-icon name="logo-google-playstore"></ion-icon></a>
+                    <a href="https://www.twitter.com" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                </div>
+                <button class="bug-report">Report a Bug</button>
+            </footer>
+        </section>
+
+        <!-- Instructions Modal -->
+        <div id="instructions" class="modal">
+            <p>Thanks for clicking. That felt good.</p>
+        </div>
+
+    </div>
+
+    <!-- Jquery -->
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			  crossorigin="anonymous">
+    </script>
+
+    <!-- Jquery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+    <!-- Ion Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+
+    <!-- Internal JS -->
+    <script type="module" src="assets/js/index.js"></script>
+</body>
+</html>
