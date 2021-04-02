@@ -3,14 +3,18 @@ import { domTemplates } from './templates.js';
 
 // Outer Scope Variables
 let addTimeBonus;
-let smileyBonusActivated = false;
+let smileyBonusActivated;
 let intervals = [];
 let pairsMatched = [];
+let audioCardOpen = new Audio('assets/audio/card_open.mp3');
+let audioMatch = new Audio('assets/audio/match.mp3');
+let audioBonusOn = new Audio('assets/audio/bonus_on.mp3');
 
 // Wait for start page DOM to finish loading and add event listeners to buttons
 document.addEventListener("DOMContentLoaded", function() {
     let startButton = document.getElementsByClassName('btn-start-game')[0];
     let reportBug = document.getElementsByClassName('bug-report')[0];
+    let mainPage = document.getElementsByClassName('btn-main-page')[0];
 
     // Event Listener - Loads game page
     startButton.addEventListener('click', function() {        
@@ -23,26 +27,37 @@ document.addEventListener("DOMContentLoaded", function() {
         loadPage(domTemplates.form);
         formSend();
     });
+
+    // Event Listener - Reloads main page
+    mainPage.addEventListener('click', function() {
+        reloadMain();
+    });
 });
 
 // Change DOM elements when button is clicked
-
 function loadPage(text) {
     document.getElementById('js-container').innerHTML = text;
 }
 
 // Start Game
-
 function startGame() {
+    //Reset Outer Scope Variables
     addTimeBonus = false;
+    smileyBonusActivated = false;
+    intervals = [];
+    pairsMatched = [];
+
     let restartButtonDesktop = document.getElementById('btn-restart-grid');
     let restartButtonMobile = document.getElementsByClassName('btn-restart')[0];
     let reportBug = document.getElementsByClassName('bug-report')[0];
+    let mainPage = document.getElementsByClassName('btn-main-page')[0];
+
     let cardsPair = [];
     let cardNumbers = [];
 
     // Event Listener - Loads Form page
     reportBug.addEventListener('click', function() {
+        intervals.forEach(clearInterval);
         loadPage(domTemplates.form);
     });
     
@@ -58,7 +73,9 @@ function startGame() {
         loadPage(domTemplates.startGame);
         startGame();
     });
-    
+
+    // Event Listener - Reload Main Page
+    mainPage.addEventListener('click', reloadMain);
 
     // Shuffle cards
     shuffleCards();
@@ -70,6 +87,9 @@ function startGame() {
         $(this).toggleClass('container-revealed');
         $(this).children('ion-icon').toggleClass('reveal-card');
         $(this).addClass('disabled');
+
+        // Trigger audio event
+        audioCardOpen.play();
 
         // Add card to cardsPair and cardNumbers arrays
         cardsPair.push(this.firstChild.attributes.name.value);
@@ -92,7 +112,6 @@ function startGame() {
 }
 
 // Shuffle cards function
-
 function shuffleCards() {
 
     let cards = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6',
@@ -117,9 +136,11 @@ function shuffleCards() {
 }
 
 // Verify pair function
-
 function isPair(pair, cards) {
     if (pair[0] === pair[1]) {
+
+        // Trigger audio event
+        audioMatch.play();
 
         // increase score
         increaseScore();
@@ -143,7 +164,6 @@ function isPair(pair, cards) {
 }
 
 // Start timer
-
 function countdown() {
 
     // Prevent further card clicks from initiating countdown
@@ -208,10 +228,8 @@ function increaseScore() {
     let time = $('#timer')[0].innerText.split(':');
     let min = parseInt(time[0]);
     let sec = parseInt(time[1]);
-    console.log(min);
 
     // Convert minutes to seconds
-    
     while (min > 0) {
         multiplier += 60;
         min--;
@@ -230,7 +248,6 @@ function increaseScore() {
 
     // Update score on DOM
     $('.score')[0].innerText = `Score: ${score}`;
-    console.log(score);
 }
 
 // Surprise bonus
@@ -245,9 +262,16 @@ function smileyBonus() {
         
         // Toggle bonus when remainder is 0
         if (number % 2 === 0) {
-           $('.bonus-card').children('ion-icon').toggleClass('reveal-card');
 
-           smileyBonusActivated = smileyBonusActivated === false ? true : false;
+            $('.bonus-card').children('ion-icon').toggleClass('reveal-card');
+
+            smileyBonusActivated = smileyBonusActivated === false ? true : false;
+
+            // Trigger audio event
+            if (smileyBonusActivated) {
+                audioBonusOn.play();
+            }
+
         }
     }, 5000);
 
@@ -282,8 +306,6 @@ function gameOver(state, finalScore) {
 
     // Event Listener - Replay Button
     $('.btn-replay').click(function() {
-        intervals = [];
-        pairsMatched = [];
         loadPage(domTemplates.startGame);
         startGame();
     });
@@ -337,4 +359,31 @@ function formSend() {
                     });
             });       
     })
+}
+
+// Reload Main Page
+function reloadMain() {
+    intervals.forEach(clearInterval);
+    loadPage(domTemplates.main);
+
+    let startButton = document.getElementsByClassName('btn-start-game')[0];
+    let reportBug = document.getElementsByClassName('bug-report')[0];
+    let mainPage = document.getElementsByClassName('btn-main-page')[0];
+
+        // Event Listener - Loads game page
+        startButton.addEventListener('click', function() {        
+            loadPage(domTemplates.startGame);
+            startGame();
+        });
+    
+        // Event Listener - Loads form page
+        reportBug.addEventListener('click', function() {
+            loadPage(domTemplates.form);
+            formSend();
+        });
+
+        // Event Listener - Reloads main page
+        mainPage.addEventListener('click', function() {
+            reloadMain();
+        });
 }
