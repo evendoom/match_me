@@ -1,4 +1,52 @@
 export const domTemplates = {
+    main:`
+        <section class="intro-screen">
+            <header><h1>Match Me</h1></header>
+            <div class="buttons-container">
+                <button class="btn-start-game" aria-label="Start Game">Start Game</button>
+                <a class="btn-instructions" href="#instructions" rel="modal:open" aria-label="Read Instructions">Instructions</a>
+            </div>
+            <footer>
+                <button class="btn-main-page" aria-label="Return to main page">&copy; Match Me 2021</button>
+                <div class="social-media-links">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Visit us on Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="https://play.google.com/store/" target="_blank" aria-label="Download our App on Google Play"><ion-icon name="logo-google-playstore"></ion-icon></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Visit us on Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+                </div>
+                <button class="bug-report" aria-label="Report a Bug to us">Report a Bug</button>
+            </footer>
+        </section>
+
+        <div id="instructions" class="modal">
+            <p>
+                Hi!<br><br>
+                Welcome to ‘Match Me’, a memory / card matching game. The rules are:
+            </p>
+            <ul>
+                <li>
+                    You begin the game with 30 seconds (countdown only starts once you click a card).
+                </li>
+                <li>
+                    When you match a pair, you get a 10 seconds bonus and your score will increase. 
+                </li>
+                <li>
+                    The score is calculated by multiplying the time you have left times 100. 
+                    For example, if you match two cards at 20 seconds, you gain 2000 points (20 x 100).
+                </li>
+                <li>
+                    Occasionally, a score bonus will be activated (a smiley face pops up on the screen). 
+                    Whilst the bonus is on, your score is multiplied by 200, instead of 100. 
+                    For example, if you match two cards at 20 seconds, you gain 4000 points (20 x 200). 
+                    The bonus is activated / de-activated at random times, so be sure to keep an eye out on the smiley face.
+                </li>
+                <li>
+                    You win the game when you match all pairs.
+                </li>
+                <li>
+                    You lose the game when you run out of time.
+                </li>
+            </ul>
+        </div>`,
     startGame:`
             <article class="game-screen">
                 <section class="game-grid">
@@ -25,18 +73,18 @@ export const domTemplates = {
                     <p class="score">Score: 0</p>
                     <div class="bonus-card"><ion-icon name="happy-outline" class="reveal-card"></ion-icon></div>
                     <div class="btn-restart-grid">
-                        <button id='btn-restart-grid'>Restart</button>
+                        <button id='btn-restart-grid' aria-label="Restart Game">Restart</button>
                     </div>    
                 </section>
-                <button class="btn-restart">Restart</button>
+                <button class="btn-restart" aria-label="Restart Game">Restart</button>
                 <footer>
-                    <p>&copy; Match Me 2021</p>
+                    <button class="btn-main-page" aria-label="Return to main page">&copy; Match Me 2021</button>
                     <div class="social-media-links">
-                        <a href="https://www.facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
-                        <a href="https://play.google.com/store/" target="_blank"><ion-icon name="logo-google-playstore"></ion-icon></a>
-                        <a href="https://www.twitter.com" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="https://www.facebook.com" target="_blank" aria-label="Visit us on Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://play.google.com/store/" target="_blank" aria-label="Download our App on Google Play"><ion-icon name="logo-google-playstore"></ion-icon></a>
+                        <a href="https://www.twitter.com" target="_blank" aria-label="Visit us on Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
                     </div>
-                    <button class="bug-report">Report a Bug</button>
+                    <button class="bug-report" aria-label="Report a Bug to us">Report a Bug</button>
                 </footer>
             </article>`,
     form:`
@@ -56,15 +104,15 @@ export const domTemplates = {
         <section class="game-over-container">
             <h1></h1>
             <p class="game-over-score"></p>
-            <button class="btn-replay">Replay</button>
+            <button class="btn-replay" aria-label="Replay Game">Replay</button>
             <footer>
                 <p>&copy; Match Me 2021</p>
                 <div class="social-media-links">
-                    <a href="https://www.facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="https://play.google.com/store/" target="_blank"><ion-icon name="logo-google-playstore"></ion-icon></a>
-                    <a href="https://www.twitter.com" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Visit us on Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="https://play.google.com/store/" target="_blank" aria-label="Download our App on Google Play"><ion-icon name="logo-google-playstore"></ion-icon></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Visit us on Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
                 </div>
-                <button class="bug-report">Report a Bug</button>
+                <button class="bug-report" aria-label="Report a Bug to us">Report a Bug</button>
             </footer>
         </section>`,
     formSent: `
@@ -74,7 +122,7 @@ export const domTemplates = {
                 Your comments have been submitted.
                 We'll get back to you whenever possible.
             </p>
-            <button class="btn-new-game">New Game!</button>
+            <button class="btn-new-game" aria-label="Play New Game">New Game!</button>
         </section>`,
     formError:`
         <section class="thank-you-container">
@@ -84,7 +132,7 @@ export const domTemplates = {
             </p>
             <p id="submit_error"></p>
             <p>Please try again later.</p>
-            <button class="btn-new-game">New Game!</button>
+            <button class="btn-new-game" aria-label="Play New Game">New Game!</button>
         </section>  
     `
 }
