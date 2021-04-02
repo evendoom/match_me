@@ -84,9 +84,15 @@ footer a {
     color: #dcdde1;
 }
 
-footer p {
+.btn-main-page {
     margin-left: 3%;
     font-size: 0.9rem;
+    border: none;
+    background: none;
+    color: white;
+    font-family: 'Josefin Sans';
+    font-weight: 200;
+    cursor: pointer;
 }
 
 .bug-report {
@@ -97,12 +103,19 @@ footer p {
     color: white;
     font-family: 'Josefin Sans';
     font-weight: 200;
+    cursor: pointer;
 }
 
 .social-media-links {
     display: flex;
     justify-content: space-between;
     width: 20%;
+}
+
+.modal {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-align: left;
 }
 
 /* --- Form Page --- */
@@ -639,7 +652,7 @@ and (orientation: portrait) {
         font-size: 1.6rem;
     }
 
-    footer p {
+    .btn-main-page {
         margin-left: 3%;
         font-size: 1rem;
     }
@@ -764,7 +777,7 @@ and (orientation: landscape) {
         margin-right: 3%;
     }
 
-    footer a, footer p, .bug-report {
+    footer a, .btn-main-page, .bug-report {
         font-size: 1.0rem
     }
 
@@ -847,7 +860,7 @@ and (orientation: landscape) {
         font-size: 3.5rem;
     }
 
-    footer a, footer p, .bug-report {
+    footer a, .btn-main-page, .bug-report {
         font-size: 1.1rem
     }
 
