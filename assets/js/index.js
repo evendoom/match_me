@@ -189,24 +189,28 @@ function countdown() {
             addTimeBonus = false;
 
         }
-
+        
+        /* Display 0 in front of minutes and seconds
+           when value of both is less than 10.
+           i.e. 09:10, instead of 9:10 */
         displayM = minutes < 10 ? `0${minutes.toString()}` : minutes.toString();
         displayS = seconds < 10 ? `0${seconds.toString()}` : seconds.toString();
         $('#timer')[0].innerText = `${displayM}:${displayS}`;
+
         seconds--;
         
+        /* Prevent seconds countdown from reaching
+           negative values */
         if (seconds < 0 && minutes > 0) {
             seconds = 59;
             minutes--;
         }
         
-
         if (minutes === 0 && seconds < 0) {
             // Get final score before reloading page
             let currentScore = $('.score')[0].innerText.split(': ');
             let finalScore = parseInt(currentScore[1]);
 
-            intervals.forEach(clearInterval);
             gameOver('lost', finalScore);
         }
     }, 1000);
@@ -287,13 +291,13 @@ function allPairsMatched(pair) {
         let currentScore = $('.score')[0].innerText.split(': ');
         let finalScore = parseInt(currentScore[1]);
 
-        intervals.forEach(clearInterval);
         gameOver('won', finalScore);
     }
 }
 
 // Game over
 function gameOver(state, finalScore) {
+    intervals.forEach(clearInterval);
     loadPage(domTemplates.gameOver);
 
     if (state === 'lost') {
@@ -310,11 +314,16 @@ function gameOver(state, finalScore) {
         startGame();
     });
 
+    // Event Listener - Reloads Main Page
+    $('.btn-main-page').click(function() {
+        reloadMain();
+    });
+
     // Event Listener - Report a Bug button
     $('.bug-report').click(function() {
         loadPage(domTemplates.form);
         formSend();
-    })
+    });
 }
 
 // Form send 
