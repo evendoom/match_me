@@ -357,7 +357,7 @@ function formSend() {
             user_name: document.getElementById('name').value,
             user_email: document.getElementById('email').value,
             message: document.getElementById('comment').value
-        }
+        };
         
         emailjs.send('service_wcq2bnx', 'send_feedback', formDetails)
             // if submit is successful
@@ -377,7 +377,7 @@ function formSend() {
                         startGame();
                     });
             });       
-    })
+    });
 }
 
 // Reload Main Page

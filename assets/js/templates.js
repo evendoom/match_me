@@ -135,4 +135,4 @@ export const domTemplates = {
             <button class="btn-new-game" aria-label="Play New Game">New Game!</button>
         </section>  
     `
-}
+};
