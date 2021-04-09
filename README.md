@@ -62,8 +62,6 @@ The [feedback page](assets/wireframes/report_a_bug.png) consists of a simple for
 
 At this stage, the following features / improvements could be implemented to boost UX:
 
-* When clicking the "Submit" button on the feedback page, it takes a couple of seconds to get feedback from the Email API (EmailJS). Because nothing is visibly happening during those seconds, this may confuse the user and tempt it to click the "Submit" button again. In order to avoid this, a spinning wheel function could be implemented once the "Submit" button is clicked.
-
 * Hover states on the footer buttons / links should change colour, to make it clearer to the user that these elements lead somewhere.
 
 * Game cards would benefit from a more imaginative design.
@@ -205,6 +203,8 @@ Tested if it's possible to submit a form with incorrect information (no name, in
 
 Clicking the "Submit" button successfully triggers the EmailJS API written inside JS function "formSend".
 
+The button will also initiate a spinning circle that will disappear once feedback submission completes or fails.
+
 #### 4.3.3 - EmailJS
 
 EmailJS functionality for this project has been set up to send the user's comments to davidej.p.correia@gmail.com, whilst also sending a confirmation message to the user's email.
@@ -282,7 +282,9 @@ The following articles / webpages / services were directly used or served as ins
 
 * References to HTML and CSS glyphs can be found on the following website: https://css-tricks.com/snippets/html/glyphs/.
 
-* The following jquery code was used for modal implementation: https://jquerymodal.com/.
+* The following jQuery code was used for modal implementation: https://jquerymodal.com/.
+
+* The following jQuery plugin was used for the spinning circle: https://www.jqueryscript.net/loading/circle-indicator-spinner.html
 
 * Form submission was implemented via [EmailJS](https://www.emailjs.com/).
 
