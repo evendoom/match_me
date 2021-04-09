@@ -1,5 +1,5 @@
 // Import DOM Templates from templates.js
-import { domTemplates } from './templates.js'; 
+import { domTemplates } from './templates.js';
 
 // Outer Scope Variables
 let addTimeBonus;
@@ -59,6 +59,7 @@ function startGame() {
     reportBug.addEventListener('click', function() {
         intervals.forEach(clearInterval);
         loadPage(domTemplates.form);
+        formSend();
     });
     
     // Event Listeners - Restart game
@@ -339,8 +340,17 @@ function formSend() {
         viewwidth + "px, initial-scale=1.0");
     }, 300);
 
+    // Create spinner element
+    // jQuery plugin found at https://www.jqueryscript.net/loading/circle-indicator-spinner.html
+    let spinner = new jQuerySpinner({
+        parentId: 'js-container',
+        duration: 500
+    });
+
     document.getElementById('report-a-bug-form').addEventListener('submit', function(event) {
         event.preventDefault();
+
+        spinner.show();
         
         // Get values from form
         const formDetails = {
