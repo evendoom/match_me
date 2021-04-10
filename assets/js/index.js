@@ -6,6 +6,7 @@ let addTimeBonus;
 let smileyBonusActivated;
 let intervals = [];
 let pairsMatched = [];
+let score;
 let audioCardOpen = new Audio('assets/audio/card_open.mp3');
 let audioMatch = new Audio('assets/audio/match.mp3');
 let audioBonusOn = new Audio('assets/audio/bonus_on.mp3');
@@ -37,6 +38,7 @@ function loadPage(text) {
 // Start Game
 function startGame() {
     //Reset Outer Scope Variables
+    score = 0;
     addTimeBonus = false;
     smileyBonusActivated = false;
     intervals = [];
@@ -110,10 +112,12 @@ function startGame() {
 // Shuffle cards function
 function shuffleCards() {
 
+    // Hard coded array containing CSS styles for the cards grid
     let cards = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6',
                 'card-7', 'card-8', 'card-9', 'card-10', 'card-11', 'card-12',
                 'card-13', 'card-14', 'card-15', 'card-16'];
 
+    // Grab all HTML elements from the cards grid
     let cardContainers = document.getElementsByClassName('card-container');
 
     // Shuffle array containing CSS classes
@@ -203,11 +207,7 @@ function countdown() {
         }
         
         if (minutes === 0 && seconds < 0) {
-            // Get final score before reloading page
-            let currentScore = $('.score')[0].innerText.split(': ');
-            let finalScore = parseInt(currentScore[1]);
-
-            gameOver('lost', finalScore);
+            gameOver('lost', score);
         }
     }, 1000);
 
@@ -216,13 +216,7 @@ function countdown() {
 
 // Increase Score
 function increaseScore() {
-    let score = 0;
     let multiplier = 0;
-    let bonus = 0;
-
-    // Get current score
-    let currentScore = $('.score')[0].innerText.split(': ');
-    score = parseInt(currentScore[1]);
 
     // Get current time
     let time = $('#timer')[0].innerText.split(':');
@@ -239,14 +233,13 @@ function increaseScore() {
 
     // Check if smileyBonus is activated
     if (smileyBonusActivated) {
-        bonus = 200 * multiplier;
+        score += 200 * multiplier;
     } else {
-        bonus = 100 * multiplier;
+        score += 100 * multiplier;
     }
 
-    score += bonus;
-
     // Update score on DOM
+    console.log(score);
     $('.score')[0].innerText = `Score: ${score}`;
 }
 
@@ -283,11 +276,7 @@ function allPairsMatched(pair) {
     pairsMatched.push(pair[0], pair[1]);
 
     if (pairsMatched.length === 16) {
-        // Get final score
-        let currentScore = $('.score')[0].innerText.split(': ');
-        let finalScore = parseInt(currentScore[1]);
-
-        gameOver('won', finalScore);
+        gameOver('won', score);
     }
 }
 
@@ -322,7 +311,7 @@ function gameOver(state, finalScore) {
     });
 }
 
-// Form send 
+// Feedback form submission
 function formSend() {
 
     // Prevent Android keyboard from changing page size
