@@ -73,10 +73,10 @@ export const domTemplates = {
                     <p class="score">Score: 0</p>
                     <div class="bonus-card"><ion-icon name="happy-outline" class="reveal-card"></ion-icon></div>
                     <div class="btn-restart-grid">
-                        <button id='btn-restart-grid' aria-label="Restart Game">Restart</button>
+                        <button class="js-btn-restart" aria-label="Restart Game">Restart</button>
                     </div>    
                 </section>
-                <button class="btn-restart" aria-label="Restart Game">Restart</button>
+                <button class="btn-restart js-btn-restart" aria-label="Restart Game">Restart</button>
                 <footer>
                     <button class="btn-main-page" aria-label="Return to main page">&copy; Match Me 2021</button>
                     <div class="social-media-links">

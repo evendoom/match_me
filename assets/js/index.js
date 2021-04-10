@@ -44,8 +44,6 @@ function startGame() {
     intervals = [];
     pairsMatched = [];
 
-    let restartButtonDesktop = document.getElementById('btn-restart-grid');
-    let restartButtonMobile = document.getElementsByClassName('btn-restart')[0];
     let reportBug = document.getElementsByClassName('bug-report')[0];
     let mainPage = document.getElementsByClassName('btn-main-page')[0];
 
@@ -59,14 +57,8 @@ function startGame() {
         formSend();
     });
     
-    // Event Listeners - Restart game
-    restartButtonDesktop.addEventListener('click', function() {
-        intervals.forEach(clearInterval);
-        loadPage(domTemplates.startGame);
-        startGame();
-    });
-
-    restartButtonMobile.addEventListener('click', function() {
+    // Event Listener - Restart game
+    $('.js-btn-restart').click(function() {
         intervals.forEach(clearInterval);
         loadPage(domTemplates.startGame);
         startGame();
