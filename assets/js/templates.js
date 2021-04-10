@@ -7,7 +7,7 @@ export const domTemplates = {
                 <a class="btn-instructions" href="#instructions" rel="modal:open" aria-label="Read Instructions">Instructions</a>
             </div>
             <footer>
-                <button class="btn-main-page" aria-label="Return to main page">&copy; Match Me 2021</button>
+                <button class="btn-main-page disabled">&copy; Match Me 2021</button>
                 <div class="social-media-links">
                     <a href="https://www.facebook.com" target="_blank" aria-label="Visit us on Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
                     <a href="https://play.google.com/store/" target="_blank" aria-label="Download our App on Google Play"><ion-icon name="logo-google-playstore"></ion-icon></a>

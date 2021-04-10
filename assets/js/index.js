@@ -14,7 +14,6 @@ let audioBonusOn = new Audio('assets/audio/bonus_on.mp3');
 document.addEventListener("DOMContentLoaded", function() {
     let startButton = document.getElementsByClassName('btn-start-game')[0];
     let reportBug = document.getElementsByClassName('bug-report')[0];
-    let mainPage = document.getElementsByClassName('btn-main-page')[0];
 
     // Event Listener - Loads game page
     startButton.addEventListener('click', function() {        
@@ -28,10 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
         formSend();
     });
 
-    // Event Listener - Reloads main page
-    mainPage.addEventListener('click', function() {
-        reloadMain();
-    });
 });
 
 // Change DOM elements when button is clicked
@@ -387,7 +382,6 @@ function reloadMain() {
 
     let startButton = document.getElementsByClassName('btn-start-game')[0];
     let reportBug = document.getElementsByClassName('bug-report')[0];
-    let mainPage = document.getElementsByClassName('btn-main-page')[0];
 
         // Event Listener - Loads game page
         startButton.addEventListener('click', function() {        
@@ -399,10 +393,5 @@ function reloadMain() {
         reportBug.addEventListener('click', function() {
             loadPage(domTemplates.form);
             formSend();
-        });
-
-        // Event Listener - Reloads main page
-        mainPage.addEventListener('click', function() {
-            reloadMain();
         });
 }
