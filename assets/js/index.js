@@ -58,7 +58,7 @@ function startGame() {
     });
     
     // Event Listener - Restart game
-    $('.js-btn-restart').click(function() {
+    $('#js-btn-restart').click(function() {
         intervals.forEach(clearInterval);
         loadPage(domTemplates.startGame);
         startGame();
