@@ -223,10 +223,15 @@ The webpage was viewed at several different resolutions, media queries kick in a
 
 * 360x740 (including landscape mode)
 * 375x667 (including landscape mode)
+* 411x823 (including landscape mode)
 * 414x736 (including landscape mode)
 * 375x812 (including landscape mode)
 * 768x1024 (including landscape mode)
 * 800x1280 (including landscape mode)
+* 834x1112 (including landscape mode)
+* 600x960 (including landscape mode)
+* 1024x1366 (including landscape mode)
+* 1280x720
 * 1440x900
 * 1920x1080
 

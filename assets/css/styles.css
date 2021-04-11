@@ -115,6 +115,7 @@ footer a {
 .modal {
     font-size: 1rem;
     letter-spacing: 2px;
+    line-height: 32px;
     text-align: left;
 }
 
