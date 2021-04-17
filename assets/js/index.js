@@ -1,15 +1,8 @@
 // Import DOM Templates from templates.js
 import { domTemplates } from './templates.js';
 
-// Outer Scope Variables
-let addTimeBonus;
-let smileyBonusActivated;
-let intervals = [];
-let pairsMatched = [];
-let score;
-let audioCardOpen = new Audio('assets/audio/card_open.mp3');
-let audioMatch = new Audio('assets/audio/match.mp3');
-let audioBonusOn = new Audio('assets/audio/bonus_on.mp3');
+// Import outer scope game variables
+import { gameVariables } from './game_variables.js';
 
 // Wait for start page DOM to finish loading and add event listeners to buttons
 document.addEventListener("DOMContentLoaded", function() {
@@ -38,11 +31,11 @@ function loadPage(text) {
 // Start Game
 function startGame() {
     //Reset Outer Scope Variables
-    score = 0;
-    addTimeBonus = false;
-    smileyBonusActivated = false;
-    intervals = [];
-    pairsMatched = [];
+    gameVariables.score = 0;
+    gameVariables.addTimeBonus = false;
+    gameVariables.smileyBonusActivated = false;
+    gameVariables.intervals = [];
+    gameVariables.pairsMatched = [];
 
     let reportBug = document.getElementsByClassName('bug-report')[0];
     let mainPage = document.getElementsByClassName('btn-main-page')[0];
@@ -52,14 +45,14 @@ function startGame() {
 
     // Event Listener - Loads Form page
     reportBug.addEventListener('click', function() {
-        intervals.forEach(clearInterval);
+        gameVariables.intervals.forEach(clearInterval);
         loadPage(domTemplates.form);
         formSend();
     });
     
     // Event Listener - Restart game
     $('#js-btn-restart').click(function() {
-        intervals.forEach(clearInterval);
+        gameVariables.intervals.forEach(clearInterval);
         loadPage(domTemplates.startGame);
         startGame();
     });
@@ -79,7 +72,7 @@ function startGame() {
         $(this).addClass('disabled');
 
         // Trigger audio event
-        audioCardOpen.play();
+        gameVariables.audioCardOpen.play();
 
         // Add card to cardsPair and cardNumbers arrays
         cardsPair.push(this.firstChild.attributes.name.value);
@@ -132,7 +125,7 @@ function isPair(pair, cards) {
     if (pair[0] === pair[1]) {
 
         // Trigger audio event
-        audioMatch.play();
+        gameVariables.audioMatch.play();
 
         // increase score
         increaseScore();
@@ -141,7 +134,7 @@ function isPair(pair, cards) {
         allPairsMatched(pair);
 
         // Increase time by 10 seconds
-        addTimeBonus = true;
+        gameVariables.addTimeBonus = true;
 
     } else {
 
@@ -169,7 +162,7 @@ function countdown() {
     let setCountdown = setInterval(function() {
 
         // Execute when pair is matched
-        if (addTimeBonus) {
+        if (gameVariables.addTimeBonus) {
 
             seconds += 10;
 
@@ -178,7 +171,7 @@ function countdown() {
                 minutes++;
             }
 
-            addTimeBonus = false;
+            gameVariables.addTimeBonus = false;
 
         }
         
@@ -199,11 +192,11 @@ function countdown() {
         }
         
         if (minutes === 0 && seconds < 0) {
-            gameOver('lost', score);
+            gameOver('lost', gameVariables.score);
         }
     }, 1000);
 
-    intervals.push(setCountdown);
+    gameVariables.intervals.push(setCountdown);
 }
 
 // Increase Score
@@ -224,15 +217,14 @@ function increaseScore() {
     multiplier += sec;
 
     // Check if smileyBonus is activated
-    if (smileyBonusActivated) {
-        score += 200 * multiplier;
+    if (gameVariables.smileyBonusActivated) {
+        gameVariables.score += 200 * multiplier;
     } else {
-        score += 100 * multiplier;
+        gameVariables.score += 100 * multiplier;
     }
 
     // Update score on DOM
-    console.log(score);
-    $('.score')[0].innerText = `Score: ${score}`;
+    $('.score')[0].innerText = `Score: ${gameVariables.score}`;
 }
 
 // Surprise bonus
@@ -250,31 +242,31 @@ function smileyBonus() {
 
             $('.bonus-card').children('ion-icon').toggleClass('reveal-card');
 
-            smileyBonusActivated = smileyBonusActivated === false ? true : false;
+            gameVariables.smileyBonusActivated = gameVariables.smileyBonusActivated === false ? true : false;
 
             // Trigger audio event
-            if (smileyBonusActivated) {
-                audioBonusOn.play();
+            if (gameVariables.smileyBonusActivated) {
+                gameVariables.audioBonusOn.play();
             }
 
         }
     }, 5000);
 
-    intervals.push(smileyEvent);
+    gameVariables.intervals.push(smileyEvent);
 }
 
 // Check if Game Won
 function allPairsMatched(pair) {
-    pairsMatched.push(pair[0], pair[1]);
+    gameVariables.pairsMatched.push(pair[0], pair[1]);
 
-    if (pairsMatched.length === 16) {
-        gameOver('won', score);
+    if (gameVariables.pairsMatched.length === 16) {
+        gameOver('won', gameVariables.score);
     }
 }
 
 // Game over
 function gameOver(state, finalScore) {
-    intervals.forEach(clearInterval);
+    gameVariables.intervals.forEach(clearInterval);
     loadPage(domTemplates.gameOver);
 
     if (state === 'lost') {
@@ -358,7 +350,7 @@ function formSend() {
 
 // Reload Main Page
 function reloadMain() {
-    intervals.forEach(clearInterval);
+    gameVariables.intervals.forEach(clearInterval);
     loadPage(domTemplates.main);
 
     let startButton = document.getElementsByClassName('btn-start-game')[0];
