@@ -268,7 +268,7 @@ Once deployed to GitHub, the following steps were taken to create a GitHub Page:
 
 1. Access the GitHub [repository](https://github.com/evendoom/match_me) via an internet browser.
 1. Click 'Settings'.
-1. On the new page, scroll down to 'GitHub Pages'.
+1. On the new page, scroll down to 'GitHub Pages' and click 'Check it out here!'.
 1. Select branch (main).
 1. Select folder (root).
 1. Click 'Save'.
