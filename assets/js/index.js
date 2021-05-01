@@ -346,6 +346,11 @@ function formSend() {
                     });
             });       
     });
+
+    // Event Listener - 'Back' button takes user to main page
+    $('#back-button').click(function(){
+        reloadMain();
+    });  
 }
 
 // Reload Main Page

@@ -102,7 +102,7 @@ export const domTemplates = {
 
             <div class="form-buttons-container">
                 <input type="submit" value="Submit" class="form-buttons">
-                <button class="form-buttons">Back</button>
+                <button class="form-buttons" id="back-button">Back</button>
             </div>
         </form>`,
     gameOver: `
