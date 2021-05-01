@@ -14,7 +14,8 @@ As a user, I expect to:
 
 ## 2. Features
 
-The website can be split into 3 main sections, each section then leading onto subsections (explained below). A PDF with all the wireframes can be found [here](assets/wireframes/match_me_wireframes.pdf). Please note that the PDF document only includes wireframes for desktop and mobile design. Tablets will take the mobile design when viewed as portrait, and desktop / laptop design when viewed as landscape.
+The website can be split into 3 main sections, each section then leading onto subsections (explained below). A PDF with all the wireframes can be found [here](assets/wireframes/match_me_wireframes.pdf).   
+Please note that the PDF document only includes wireframes for desktop and mobile design. Tablets will take the mobile design when viewed as portrait, and desktop / laptop design when viewed as landscape.
 
 The website's 3 main sections are:
 
@@ -26,7 +27,11 @@ All pages use the "Josefin Sans" font from Google Fonts, usually with a large si
 
 ### 2.1 - The Start Page
 
-The [start page](assets/wireframes/start_page.png) has a very simple layout. The title of the game (Match Me) is displayed at the top of the page, and at the centre the user will find two big buttons: "Start Game" and "Instructions". The first button takes the user to the app's second main section (the game page), while "Instructions" provides the user with information regarding the game's rules and score method. Clicking the "Instructions" [button](assets/wireframes/instructions_modal.png) will open a modal window that can be closed by clicking the "X" on the upper right corner. 
+The [start page](assets/wireframes/start_page.png) has a very simple layout. The title of the game (Match Me) is displayed at the top of the page, and at the centre the user will find two big buttons: "Start Game" and "Instructions".  
+
+The first button takes the user to the app's second main section (the game page), while "Instructions" provides the user with information regarding the game's rules and score method.  
+
+Clicking the "Instructions" [button](assets/wireframes/instructions_modal.png) will open a modal window that can be closed by clicking the "X" on the upper right corner. 
 
 At the bottom of this section the user will find a footer containing basic copyright text on the left, social links in the middle and a feedback button ("Report a Bug") on the right. The feedback button sends the user to the website's third main section: the feedback page.
 
@@ -56,7 +61,12 @@ The game page incorporates audio effects that are triggered when the following e
 
 ### 2.3 - The Feedback Page
 
-The [feedback page](assets/wireframes/report_a_bug.png) consists of a simple form where the user is required to enter his name, email address and feedback. Once all fields have been filled in, the user can click the "Submit" button and the data will be sent to the developer's email address (in this case, davidej.p.correia@gmail.com). A confirmation of receipt will also be sent to the user's email address. Once the "Submit" button is clicked, the HTML elements in this page change dynamically to confirm if the submission has been successful or not (wireframe example can be [here](assets/wireframes/report_a_bug_submit.png)). After feedback submission (whether successful or not), a "New Game!" button becomes visible, allowing users to return to main section 2 (the game page).
+The [feedback page](assets/wireframes/report_a_bug.png) consists of a simple form where the user is required to enter his name, email address and feedback. Once all fields have been filled in, the user can click the "Submit" button and the data will be sent to the developer's email address (in this case, davidej.p.correia@gmail.com). A confirmation of receipt will also be sent to the user's email address. 
+
+Once the "Submit" button is clicked, a [spinning wheel](https://www.jqueryscript.net/loading/circle-indicator-spinner.html) appears and a few seconds later, the user is taken to a new page that confirms if the submission was successful or not (wireframe example can be found [here](assets/wireframes/report_a_bug_submit.png)).
+
+After feedback submission (whether successful or not), a "New Game!" button becomes visible, allowing users to return to main section 2 (the game page).
+
 The form page also includes a 'Back' button that allows the user to go back to section 1 (the start page).
 
 ### 2.4 Features Left to Implement
@@ -211,6 +221,7 @@ The following items were tested on the feedback page:
 * Form input text elements
 * Submit button
 * EmailJS
+* Spinning Wheel
 * Back button
 
 #### 4.3.1 - Form Input Text Elements
@@ -220,8 +231,6 @@ Tested if it's possible to submit a form with incorrect information (no name, in
 #### 4.3.2 - Submit Button
 
 Clicking the "Submit" button successfully triggers the EmailJS API written inside JS function "formSend".
-
-The button will also initiate a spinning circle that will disappear once feedback submission completes or fails.
 
 #### 4.3.3 - EmailJS
 
@@ -235,7 +244,13 @@ To simulate a submission error, I changed the EmailJS template used from "send_f
 
 On both scenarios (successful and error), the user is presented with a "New Game!" button. This button does what is expected: it loads the game page and triggers the "startGame" function.
 
-#### 4.3.4 - Back Button
+#### 4.3.4 - Spinning Wheel
+
+The spinning wheel kicks in as expected, once the form has been filled in correctly and the 'Submit' button has been clicked.
+
+The visual effect then terminates, once the submission completes or fails.
+
+#### 4.3.5 - Back Button
 
 Clicking the 'Back' button successfully takes the user back to the main page.
 
@@ -298,7 +313,7 @@ With the HTML and CSS in place, I began writing the Javascript code to add funct
 
 ### 5.4 - New features / Bug fixing
 
-With most of the Js code written, I then slowly began adding extra features (more media queries, spinning wheel on the form page, etc.) and also fix some bugs I had not previously encountered during development.
+With most of the JS code written, I then slowly began to add extra features (more media queries, spinning wheel on the form page, etc.) and also fix some bugs I had not previously encountered during development.
 
 ## 6 - Deployment
 
