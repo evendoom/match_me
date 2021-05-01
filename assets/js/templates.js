@@ -1,7 +1,10 @@
 export const domTemplates = {
     main:`
         <section class="intro-screen">
-            <header><h1>Match Me</h1></header>
+            <header>
+                <h1>Match Me</h1>
+                <h3>A fast-paced memory game</h3>
+            </header>
             <div class="buttons-container">
                 <button class="btn-start-game" aria-label="Start Game">Start Game</button>
                 <a class="btn-instructions" href="#instructions" rel="modal:open" aria-label="Read Instructions">Instructions</a>
