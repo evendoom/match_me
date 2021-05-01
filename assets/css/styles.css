@@ -174,7 +174,13 @@ footer a {
     width: 80%;
 }
 
-.form-submit-button {
+.form-buttons-container {
+    display: flex;
+    width: 85%;
+    justify-content: space-around;
+}
+
+.form-buttons {
     border: 3px solid black;
     padding: 12px 20px;
     color: black;
@@ -185,6 +191,7 @@ footer a {
     font-weight: 200;
     cursor: pointer;
     margin: 10px 0 20px 0;
+    width: 120px;
 }
 
 .report-a-bug-form label[for="name"] {
@@ -501,7 +508,7 @@ and (orientation: landscape) {
         height: 85%;
     }
 
-    .report-a-bug-form label, .form-submit-button, .form-input-box, .comment-box {
+    .report-a-bug-form label, .form-buttons, .form-input-box, .comment-box {
         font-size: 0.9rem;
     }
 
@@ -513,7 +520,11 @@ and (orientation: landscape) {
         margin-top: 1%;
     }
 
-    .form-submit-button {
+    .form-buttons-container {
+        width: 55%;
+    }
+
+    .form-buttons {
         border: 2px solid black;
         padding: 8px 15px;
         margin-bottom: 1%;
@@ -664,7 +675,7 @@ and (orientation: landscape) {
         font-size: 1.2rem;
     }
 
-    .form-input-box, .comment-box, .form-submit-button {
+    .form-input-box, .comment-box, .form-buttons {
         font-size: 1.1rem;
     }
 }
@@ -704,6 +715,10 @@ and (orientation: portrait) {
     .btn-replay {
         padding: 15px 30px;
         font-size: 1.3rem;
+    }
+
+    .form-buttons-container {
+        width: 70%;
     }
 }
 
@@ -750,9 +765,8 @@ and (orientation: portrait) {
         height: 3.3%;
     }
 
-    .form-submit-button {
+    .form-buttons {
         font-size: 1.1rem;
-        padding: 12px 24px;
     }
 
     .comment-box {
@@ -906,7 +920,7 @@ and (orientation: landscape) {
         width: 75%;
     }
 
-    .form-submit-button {
+    .form-buttons {
         font-size: 1.1rem;
         padding: 12px 24px;
     }
@@ -1038,9 +1052,8 @@ and (orientation: landscape) {
         width: 50%;
     }
 
-    .form-submit-button {
-        font-size: 1.1rem;
-        padding: 12px 24px;
+    .form-buttons-container {
+        width: 45%;
     }
 
     .comment-box {

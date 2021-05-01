@@ -100,7 +100,10 @@ export const domTemplates = {
             <label for="comment">Comments</label>
             <textarea id="comment" name="comment" cols="24" rows="9" placeholder="Report a bug or send your feedback here" class="comment-box" required></textarea>
 
-            <input type="submit" value="Submit" class="form-submit-button">
+            <div class="form-buttons-container">
+                <input type="submit" value="Submit" class="form-buttons">
+                <button class="form-buttons">Back</button>
+            </div>
         </form>`,
     gameOver: `
         <section class="game-over-container">
