@@ -9,7 +9,7 @@ The target audience for this application are individuals of all ages that can op
 As a user, I expect to:
 * Easily understand what are the game instructions
 * Quickly access the game itself
-* Have fun whilst playing the game
+* Have fun playing the game
 * Be able to provide feedback to the developers without any difficulty
 
 ## 2. Features
@@ -46,7 +46,7 @@ The restart button restarts the game.
 
 At the bottom of this page, the user can also find the same footer as in the start page section. The copyright text at the left side can be clicked, leading the user back to the main page.
 
-When the game is complete, the user is taken to a game over [page](assets/wireframes/game_over.png). The text on this page changes dinamically, depending on whether the user won or lost the game. This subsection also includes a "Replay" button that takes the user back to the game page, allowing them to play a new game. The usual footer and all its functionality can also be found at the bottom of the game over subsection.
+When the game is complete, the user is taken to a game over [page](assets/wireframes/game_over.png). The text on this page changes dynamically, depending on whether the user won or lost the game. This subsection also includes a "Replay" button that takes the user back to the game page, allowing them to play a new game. The usual footer and all its functionality can also be found at the bottom of the game over subsection.
 
 The game page incorporates audio effects that are triggered when the following events take place:
 
@@ -56,17 +56,31 @@ The game page incorporates audio effects that are triggered when the following e
 
 ### 2.3 - The Feedback Page
 
-The [feedback page](assets/wireframes/report_a_bug.png) consists of a simple form where the user is required to enter his name, email address and feedback. Once all fields have been filled in, the user can click the "Submit" button and the data will be sent to the developer's email address (in this case, davidej.p.correia@gmail.com). A confirmation of receipt will also be sent to the user's email address. Once the "Submit" button is clicked, the HTML elements in this page change dinamically to confirm if the submission has been successful or not (wireframe example can be [here](assets/wireframes/report_a_bug_submit.png)). After feedback submission (whether successful or not), a "New Game!" button becomes visible, allowing users to return to main section 2 (the game page).
+The [feedback page](assets/wireframes/report_a_bug.png) consists of a simple form where the user is required to enter his name, email address and feedback. Once all fields have been filled in, the user can click the "Submit" button and the data will be sent to the developer's email address (in this case, davidej.p.correia@gmail.com). A confirmation of receipt will also be sent to the user's email address. Once the "Submit" button is clicked, the HTML elements in this page change dynamically to confirm if the submission has been successful or not (wireframe example can be [here](assets/wireframes/report_a_bug_submit.png)). After feedback submission (whether successful or not), a "New Game!" button becomes visible, allowing users to return to main section 2 (the game page).
+The form page also includes a 'Back' button that allows the user to go back to section 1 (the start page).
 
 ### 2.4 Features Left to Implement
 
 At this stage, the following features / improvements could be implemented to boost UX:
 
-* Hover states on the footer buttons / links should change colour, to make it clearer to the user that these elements lead somewhere.
+* Hover states on the footer buttons / links could change colour, to make it clearer to the user that these elements lead somewhere.
 
 * Game cards would benefit from a more imaginative design.
 
 * The game instructions are sitting inside a modal window, which feels a bit overwhelming on mobile devices. Instead of a modal window, it might be worth generating an HTML page for the instructions.
+
+* The game should allow the user to change between difficulty levels, making it more challenging.
+
+* The user should be able to define the value for the countdown timer, instead of the default 30 seconds. This will also help in making the game more challenging.
+
+### 2.5 App screenshots
+
+Screenshots of the final developed product can be found below:
+
+* [Main Page](assets/finished_project_screenshots/main_page.png)
+* [Game Instructions](assets/finished_project_screenshots/instructions.png)
+* [Game Page](assets/finished_project_screenshots/game_page.png)
+* [Feedback Page](assets/finished_project_screenshots/form_page.png)
 
 ## 3. Technologies Used
 
@@ -79,6 +93,9 @@ The API [EmailJS](https://www.emailjs.com/) was used on section 3 of this websit
 For the game cards pictures, the following framework was used: https://ionicons.com/.
 
 ## 4. Testing
+
+Testing was done locally with Visual Studio Code and extension 'Live Server'.
+The same testing was also performed on the version deployed to GitHub, after creating a GitHub page.
 
 ### 4.1 - The Start Page
 
@@ -194,6 +211,7 @@ The following items were tested on the feedback page:
 * Form input text elements
 * Submit button
 * EmailJS
+* Back button
 
 #### 4.3.1 - Form Input Text Elements
 
@@ -217,6 +235,10 @@ To simulate a submission error, I changed the EmailJS template used from "send_f
 
 On both scenarios (successful and error), the user is presented with a "New Game!" button. This button does what is expected: it loads the game page and triggers the "startGame" function.
 
+#### 4.3.4 - Back Button
+
+Clicking the 'Back' button successfully takes the user back to the main page.
+
 ### 4.4 - Responsive Elements
 
 The webpage was viewed at several different resolutions, media queries kick in as expected. The following resolutions were tested:
@@ -235,7 +257,7 @@ The webpage was viewed at several different resolutions, media queries kick in a
 * 1440x900
 * 1920x1080
 
-The form page has a bug when viewed on Android phones. When touching on one of the text fields, the virtual keyboard is activated and squeezes the viewport, making it difficult to view the form. A solution for this was found on a stackover [discussion](https://stackoverflow.com/questions/32963400/android-keyboard-shrinking-the-viewport-and-elements-using-unit-vh-in-css). Code can be found below:
+The form page has a bug when viewed on Android phones. When touching on one of the text fields, the virtual keyboard is activated and squeezes the viewport, making it difficult to view the form. A solution for this was found on a stackoverflow [discussion](https://stackoverflow.com/questions/32963400/android-keyboard-shrinking-the-viewport-and-elements-using-unit-vh-in-css). Code can be found below:
 
 ```javascript
     setTimeout(function () {
@@ -260,9 +282,27 @@ For mobile, I used an Asus Zenphone 5, Android version 9. The following browsers
 * Mozilla Firefox (87.0.0-rc.1).
 * Google Chrome (89.0.4389.105).
 
-## 5 - Deployment
+## 5 - Development Cycle
 
-Website was deployed to GitHub (username [evendoom](https://github.com/evendoom/)) via Visual Studio Code. 
+### 5.1 - HTML development
+
+The first stage of development was writing the HTML code for the main page (seen in 'index.html'). I then created more HTML pages for other sections (i.e. game page, feedback form), to use as a visual reference while I was still working on the HTML and CSS bits.
+
+### 5.2 - CSS Code
+
+Once I was happy with the HTML structure, I then started applying styles by writing CSS code, which can be seen on file 'styles.css'.
+
+### 5.3 - Javascript Functionality
+
+With the HTML and CSS in place, I began writing the Javascript code to add functionality to the page (seen in 'index.js'). Additionally, the HTML code I had on my extra HTML pages (game layout, form, etc.) was copied to a JS module file called 'templates.js'. As stated on section 5.1, these HTML pages were only meant to be used as a visual reference whilst working on HTML / CSS code. The goal is to use Javascript to manipulate the elements on index.html (more specifically, alter the contents inside the div with ID 'js-container').
+
+### 5.4 - New features / Bug fixing
+
+With most of the Js code written, I then slowly began adding extra features (more media queries, spinning wheel on the form page, etc.) and also fix some bugs I had not previously encountered during development.
+
+## 6 - Deployment
+
+The project was deployed to GitHub (username [evendoom](https://github.com/evendoom/)) via Visual Studio Code. 
 
 Once deployed to GitHub, the following steps were taken to create a GitHub Page: 
 
@@ -273,11 +313,11 @@ Once deployed to GitHub, the following steps were taken to create a GitHub Page:
 1. Select folder (root).
 1. Click 'Save'.
 
-## 6 - Credits
+## 7 - Credits
 
 The following articles / webpages / services were directly used or served as inspiration for this project:
 
-* The website 'Flat UI colors' provided inpiration regarding color palettes: https://flatuicolors.com/.
+* The website 'Flat UI colors' provided inspiration regarding color palettes: https://flatuicolors.com/.
 
 * The primary font style used throughout this website (Josefin Sans) was taken from [Google Fonts](https://fonts.google.com/).
 
@@ -296,5 +336,7 @@ The following articles / webpages / services were directly used or served as ins
 * The stackoverflow website was used as a reference to some bug solving, particularly to fix the viewport on Android mobile devices when the virtual keyboard is activated: https://stackoverflow.com/questions/32963400/android-keyboard-shrinking-the-viewport-and-elements-using-unit-vh-in-css.
 
 * The following MDN article gave me a good understanding on how to use modules in javascript: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules.
+
+* The audio effects used on this game were created on Steinberg Cubase, using a virtual instrument called 'Omnisphere' by Spectrasonics.
 
 *README.md written by Davide Correia, 2021*
